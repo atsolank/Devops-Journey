@@ -1,0 +1,33 @@
+atul@Atul:/mnt/c/Users/lenovo/Desktop/Devops-Journey/Lab/Lab2_Build_custom_docker_image_deploy$ touch Dockerfile
+atul@Atul:/mnt/c/Users/lenovo/Desktop/Devops-Journey/Lab/Lab2_Build_custom_docker_image_deploy$ nano Dockerfile
+atul@Atul:/mnt/c/Users/lenovo/Desktop/Devops-Journey/Lab/Lab2_Build_custom_docker_image_deploy$ cat Dockerfile 
+FROM nginx:latest
+COPY index.html /usr/share/nginx/html/index.html
+
+atul@Atul:/mnt/c/Users/lenovo/Desktop/Devops-Journey/Lab/Lab2_Build_custom_docker_image_deploy$ docker build -t atul-nginx:v1 .
+[+] Building 3.1s (7/7) FINISHED                                                                                             docker:default
+ => [internal] load build definition from Dockerfile                                                                                   0.2s
+ => => transferring dockerfile: 104B                                                                                                   0.1s
+ => [internal] load metadata for docker.io/library/nginx:latest                                                                        0.4s
+ => [internal] load .dockerignore                                                                                                      0.1s
+ => => transferring context: 2B                                                                                                        0.0s
+ => [internal] load build context                                                                                                      0.2s
+ => => transferring context: 240B                                                                                                      0.0s
+ => [1/2] FROM docker.io/library/nginx:latest@sha256:341bf0f3ce6c5277d6002cf6e1fb0319fa4252add24ab6a0e262e0056d313208                  0.7s
+ => => resolve docker.io/library/nginx:latest@sha256:341bf0f3ce6c5277d6002cf6e1fb0319fa4252add24ab6a0e262e0056d313208                  0.1s
+ => [2/2] COPY index.html /usr/share/nginx/html/index.html                                                                             0.1s
+ => exporting to image                                                                                                                 0.9s
+ => => exporting layers                                                                                                                0.3s
+ => => exporting manifest sha256:defd703874a93f946486c513b71794865e817ec509c514c823a53101f8913006                                      0.1s
+ => => exporting config sha256:de175551d54211df3825e6738bf7ad00d48b2ec10d2d7a2b781b99be5055ae09                                        0.1s
+ => => exporting attestation manifest sha256:38b391488525ae831e6c1150509d1320f4a2148a6d4cbd596bb015ef4bbc2d51                          0.1s
+ => => exporting manifest list sha256:4762458c59fc7d1c0fbde832066ed3aa9fb9011ecddde5ad325c2057323ab9e7                                 0.1s
+ => => naming to docker.io/library/atul-nginx:v1                                                                                       0.0s
+ => => unpacking to docker.io/library/atul-nginx:v1                                                                                    0.1s
+atul@Atul:/mnt/c/Users/lenovo/Desktop/Devops-Journey/Lab/Lab2_Build_custom_docker_image_deploy$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED              SIZE
+atul-nginx   v1        4762458c59fc   About a minute ago   237MB
+nginx        latest    341bf0f3ce6c   2 weeks ago          237MB
+atul@Atul:/mnt/c/Users/lenovo/Desktop/Devops-Journey/Lab/Lab2_Build_custom_docker_image_deploy$ docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS         PORTS                                     NAMES
+9108deab65b3   atul-nginx:v1   "/docker-entrypoint.…"   8 seconds ago   Up 7 seconds   0.0.0.0:9090->80/tcp, [::]:9090->80/tcp   custom-nginx
