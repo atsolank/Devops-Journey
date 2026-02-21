@@ -71,4 +71,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 atul@Atul:~$ docker rm mynginx
 mynginx
 atul@Atul:~$ 
+
 ```
+Output tested on browser
+<img width="913" height="261" alt="image" src="https://github.com/user-attachments/assets/2e8e35f1-89f4-46ef-9948-d3fbf150a866" />
